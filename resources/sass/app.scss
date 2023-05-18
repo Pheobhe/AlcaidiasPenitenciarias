@@ -1,0 +1,479 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+
+
+body {
+  counter-reset: my-sec-counter;
+  color: #414042;
+	background: #f0f0f0;
+  font-family: 'Encode Sans', sans-serif;
+}
+
+.flex items-center justify-between {
+  background-color: #009AAE;
+}
+
+div.hidden sm:flex-1 sm:flex sm:items-center sm:justify-between {
+size: 8px;
+}
+
+h2 {
+  text-align: center;
+  padding: 50px 100px;
+}
+
+@mixin botones {
+  border: 0;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px;
+  cursor: pointer;
+}
+
+
+.icon {
+  width: 50px;
+}
+
+// ---------------------------------------------------------------
+// MENU DESKTOP
+
+.nav-menu{
+  height: 70px;
+  width: 100%;
+  padding: 14px 30px;
+  position: sticky;
+}
+
+.nav-links{
+  display: flex;
+  font-size: 20px;
+  justify-content: flex-start;
+}
+
+.container-menu {
+  margin: auto;
+  max-width: var(--max-width);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  width: 100%;
+}
+ 
+// .nav-menu .nav-links .loginBtn{
+//   display: inline-block;
+//   padding: 5px 15px;
+//   margin-left: 20px;
+//   font-size: 17px;
+//   color: rgb(9, 14, 90);
+// }
+
+.nav-menu .nav-links a{
+  padding: 10px 12px;
+  text-decoration: none;
+  color: #414042;
+}
+
+/* Hover effects */
+.nav-menu .nav-links a:hover{
+  color: #009AAE;
+  background-color: #FAFAFA;
+}
+ 
+/* responsive nav-menu toggle button */
+// .nav-menu .nav-menu .nav-btn{
+//   display: none;
+// }
+
+.logo-menu img {
+  width: 10rem;
+  margin-top: 0.3rem;
+}
+
+
+
+// @media (max-width:700px) {
+  // .nav-menu .nav-btn{
+  //   display: inline-block;
+  //   position: absolute;
+  //   top: 0px;
+  //   right: 0px;
+  // }
+  // .nav-menu .nav-btn label {
+  //   display: inline-block;
+  //   width: 80px;
+  //   height: 70px;
+  //   padding: 25px;
+  // }
+  // .nav-menu .nav-btn {
+  //   display: block;
+  //   height: 10px;
+  //   width: 25px;
+  // }
+  // .nav-menu .nav-btn .nav-menu ~ .nav-btn {
+  //   background-color: #838383;
+    
+  // }
+  // .nav-menu .nav-links{
+  //   position: absolute;
+  //   display: block;
+  //   text-align: center;
+  //   width: 100px;
+  //   background-color: #838383;
+  //   transition: all 0.3s ease-in;
+  //   overflow-y: hidden;
+  //   top: 70px;
+  //   right: 0px;
+  // }
+  // .nav-menu .nav-links a {
+  //   display: block;
+  // }
+ 
+  // /* when nav toggle button not checked */
+  // .nav-menu #nav-check:not(:checked) ~ .nav-links {
+  //   height: 0px;
+  // }
+ 
+  // /* when nav toggle button is checked */
+  // .nav-menu #nav-check:checked ~ .nav-links {
+  //   height: calc(100vh - 70px);
+  //   overflow-y: auto;
+  // }
+  // .nav-menu .nav-links .loginBtn {
+  //   padding: 10px 40px ;
+  //   margin: 20px;
+  //   font-size:  18px;
+  //   font-weight: bold;
+  //   color: rgb(9, 14, 90);
+  // }
+// }
+
+// FIN Menu desktop
+// ---------------------------------------------------------------
+
+// Menu RESPONSIVE
+
+// Estilos para el ícono del Menú
+
+.menu-responsive {
+  height: 70px;
+  width: 100%;
+  margin: 0;
+  padding: 14px 30px;
+  position: sticky;
+  display: none;
+  z-index: 9999;
+}
+
+.icono-menu {
+ 
+  position: fixed;
+  z-index: 9999;
+}
+
+.icono-menu img{
+  vertical-align: top;
+  width: 40px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+// Estilos para el contenedor del Menú 
+.cont-menu{
+  background-color: #828282;
+  width: 400px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: all .5s ease;
+  z-index: 9;
+  
+}
+
+// Estilos por agregar en JavaScript 
+.active{
+  transform: translate(-600px);
+}
+
+/*
+.pagination .page-item.active{
+  transform: none;
+}
+
+.pagination {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+*/
+
+// .container nav {
+//   z-index: 1;
+//   width: 50%;
+// }
+
+// Estilos para el listado del Menú 
+.cont-menu ul{
+  padding: 100px 0px 20px 0px;
+  list-style: none;
+}
+
+.cont-menu ul li a{
+  color: white;
+  display: block;
+  font-size: 25px;
+  text-decoration: none;
+  padding: 10px 50px;
+  cursor: pointer;
+}
+
+.cont-menu ul li a:hover{
+  background-color: #fafafa;
+  color: #009AAE;
+}
+
+.logo-menu-responsive img {
+  width: 10rem;
+  margin-top: 0.3rem;
+  float: right
+}
+
+@media
+   only screen 
+   and (max-width: 760px), (min-device-width: 768px) 
+   and (max-device-width: 1024px) {
+     .menu-responsive {
+       display:inline-block;
+       
+       
+     }
+     .container{
+      z-index:-1;
+      position: relative;
+     }
+     nav .pagination .page-item {
+      z-index: -1;
+     }
+     .container-menu {
+       display: none;
+     }
+ }
+
+// FIN Menu responsive
+// ---------------------------------------------------------------
+
+// BOTONES
+a.btn.btn-success {
+  @include botones; 
+    float: right;
+    z-index: -1;
+    background-color: #009AAE;
+    &:hover {
+      background-color: #838383;
+    }
+  }
+
+  a.btn.btn-primary {
+    @include botones;
+    
+    background-color: #0f59d1;
+    &:hover {
+      
+      background-color: #4287f5;
+    }
+  }
+
+  button.btn.btn-danger {
+    @include botones;
+    
+    background-color: #BE1717;
+    &:hover {
+      
+      background-color: #DE2323;
+    }
+  }
+
+
+
+.btn.btn-primary.ml-3 {
+  @include botones;
+  z-index: -1;
+  background-color: #22a954;
+  &:hover{
+    
+    background-color: #32c96a;
+  }
+}
+
+a.btn.btn-primary.back {
+  @include botones;
+  
+  background-color: #838383;
+  &:hover{
+    
+    background-color: #c0c0c0;
+  }
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.form-control-capacidades {
+  position: relative;
+  margin-left: 20px;
+  justify-content: space-between;
+}
+
+.titulo-carga-capacidad {
+  margin-left: 20px;
+  margin-right: 20px;
+  justify-content: center;
+}
+
+.switch-y-capacidad {
+  display: flex;
+}
+
+// ion-icon {
+// color: blue;
+// }
+
+nav a {
+  background-color: #009AAE;
+  color: #FAFAFA;
+  text-decoration: none;
+  padding: 20px;
+}
+
+nav a:hover {
+  background-color: #838383;
+  color: #FAFAFA;
+  text-decoration: none;
+}
+
+.boton-impresion {
+  @include botones;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.boton-impresion input {
+  background-color: #009AAE;
+  color: #fafafa;
+  border: 0;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px;
+  cursor: pointer;
+  &:hover {
+    background-color: #838383;
+  }
+}
+
+@mixin query-print {
+  @media print {
+    @content;
+  }
+
+  .cuerpo-impresion {
+    @content;
+  }
+}
+
+// .box {
+//   width: 200px;
+//   height: 200px;
+//   background: lightsalmon;
+//   margin: 15px;
+// }
+
+@media print {
+
+html,
+body,
+page[size="A4"] {
+    padding:0px;
+    margin:0px;
+    width: 210mm;
+    height: 297mm;
+}
+
+body {
+  print-color-adjust: exact !important;
+  zoom: 100%;
+}
+
+header, footer, nav, form, .icono-menu, .boton-impresion {
+  display: none;
+}
+
+}

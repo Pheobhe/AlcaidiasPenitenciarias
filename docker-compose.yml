@@ -1,0 +1,78 @@
+version: "3.7"
+services:
+  app:
+    build:
+        context: .
+        dockerfile: docker/Dockerfile.php
+        args:
+          APP_ENV: dev
+          COMPOSER_NO_DEV: 0
+    env_file:
+    - .env
+    restart: unless-stopped
+    volumes:
+        - ./config:/srv/sistema/config:rw
+        - ./app:/srv/sistema/app:rw
+        - ./database:/srv/sistema/database:rw
+        - ./public:/srv/sistema/public:rw
+        - ./tests:/srv/sistema/tests:rw
+        - ./routes:/srv/sistema/routes:rw
+        - ./resources:/srv/sistema/resources:rw
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - app-db:/var/lib/mysql:rw,delegated
+    # ports:
+    #   - 3306:3306
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-p1234"]
+        timeout: 10s
+        retries: 5
+
+  nginx:
+    build:
+        context: .
+        dockerfile: docker/Dockerfile.nginx
+    depends_on:
+    - app
+    volumes:
+      - ./public:/srv/sistema/public
+      - ./resources:/srv/sistema/resources
+    environment:
+        VIRTUAL_HOST: localhost
+    ports:
+        - "8080:80"
+    restart: unless-stopped
+
+  # phpmyadmin:
+  #   image: phpmyadmin:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8080:80
+  #   environment:
+  #     PMA_HOST: database
+  #     PMA_PASSWORD: ${DB_PASSWORD}
+  #   depends_on:
+  #     - database
+
+  node:
+    container_name: node
+    image: node:lts
+    working_dir: /srv/sistema
+    volumes:
+      - ./:/srv/sistema
+    ports:
+      - 5173:5173
+    entrypoint: ['npm', 'run', 'dev']
+volumes:
+  app-db: {}
